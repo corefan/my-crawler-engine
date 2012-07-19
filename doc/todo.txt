@@ -1,0 +1,28 @@
+一.分析
+1. 现定于明，限定爬虫层数
+2. 网页内容，主题相关
+3. 入库（SQLite）
+4. 支持检索
+5. 支持远程HTTP访问
+
+
+网页内容解析
+
+get_body
+regex expression("<(BODY|body)(\\s+[\\s\\S]*?)?>[\\s\\S]*<\\/(BODY|body)>",regex::icase | regex::perl);
+
+remove_script
+regex expression("<script[^>]*>[\\s\\S]*?</script>");
+regex_replace
+
+get_url
+regex expression("http(s)?://([\\w-]+\\.)+[\\w-]+(/[-\\w/?%&=\\.]*)?",regex::icase | regex::perl);
+
+get_title
+<title></title>
+
+
+调度算法、更新策略
+
+1. 过滤背景，布局标签
+2. 过滤出url，主题，图片
