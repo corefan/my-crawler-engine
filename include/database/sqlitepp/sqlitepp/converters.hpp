@@ -15,6 +15,8 @@
 #endif
 
 #include "string.hpp"
+#include <atlbase.h>
+#include <atlconv.h>
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -73,6 +75,20 @@ struct converter<string_t>
 	static string_t const& from(string_t const& t)
 	{
 		return t;
+	}
+};
+
+template<>
+struct converter<std::string>
+{
+	typedef std::string base_type;
+	std::string to(string_t const& b)
+	{
+		return std::string(CT2A(b.c_str()));
+	}
+	string_t from(std::string const& t)
+	{
+		return string_t(CA2T(t.c_str()));
 	}
 };
 

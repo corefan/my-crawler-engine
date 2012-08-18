@@ -4,9 +4,7 @@
 #include "common.hpp"
 #include "url.hpp"
 
-#include "database/sqlitepp/sqlitepp/session.hpp"
-#include "database/sqlitepp/sqlitepp/statement.hpp"
-#include "database/sqlitepp/sqlitepp/use.hpp"
+
 
 
 namespace crawler
@@ -17,7 +15,8 @@ namespace crawler
 		{
 			typedef std::function<void(const std::string &)>	handle_error_type;
 
-			std::auto_ptr<sqlitepp::session> session_;
+			struct impl;
+			std::auto_ptr<impl> impl_;
 
 		public:
 			void start();
