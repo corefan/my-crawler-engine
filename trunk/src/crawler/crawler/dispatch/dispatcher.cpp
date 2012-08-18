@@ -220,7 +220,7 @@ namespace crawler
 			impl_->thread_.RegisterFunc(std::bind(&impl::_thread_run, impl_.get()));
 			impl_->thread_.Start();
 
-			url_ptr default_url = create_url(L"http://www.baidu.com/");
+			url_ptr default_url = create_url(L"http://blog.csdn.net/chenyu2202863/");
 			if( !impl_->visited_queue_.is_exsit(default_url) )
 				impl_->url_queue_.put(default_url);
 		}
